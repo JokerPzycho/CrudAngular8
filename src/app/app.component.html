@@ -1,0 +1,38 @@
+<nav class="navbar navbar-dark bg-danger">
+  <a class="navbar-brand" href="/">
+    Angular
+  </a>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8"><br>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action"
+          *ngFor="let employee of employeArray"
+          (click) = "openForEdit(employee)"
+          [class.active]="employee == selectEmployee">
+          {{ employee.id }}. {{ employee.name }} {{ employee.country }}
+        </li>
+      </ul>
+      <div class=" mt-4">
+        <div class="card-body">
+          <div class="card-title">
+            Inserte un nuevo empleado
+          </div>
+          <div class="form-group">
+            <input type="text" [(ngModel)]="selectEmployee.name" placeholder="Ingrese un nombre" class="form-control">
+          </div><br>
+          <div class="form-group">
+            <input type="text" [(ngModel)]="selectEmployee.country" placeholder="Ingrese una ciudad" class="form-control">
+          </div><br>
+          <button (click)="addOrEdit()" class="btn btn-secondary"> Submit </button>
+          <button *ngIf="selectEmployee.id !== 0" (click)="Delete()" class="btn btn-danger"> Eliminar </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+  </div>
+</div>
